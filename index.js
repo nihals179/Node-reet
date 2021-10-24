@@ -1,8 +1,6 @@
 const express = require("express");
-
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 const app = express();
 
 app.use(
@@ -25,6 +23,7 @@ db.mongoose
 		{
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
+			useFindAndModify: false,
 		}
 	)
 	.then(() => {
@@ -83,7 +82,7 @@ require("./app/routes/product.routes")(app);
 require("./app/routes/cart.routes")(app);
 // simple route
 app.get("/", (req, res) => {
-	res.json({ message: "Welcome to Reet application." });
+	res.json({ message: "Welcome to application." });
 });
 
 app.use(cors());

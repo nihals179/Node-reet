@@ -16,8 +16,6 @@ exports.addItem = (req, res) => {
 		ondemand: req.body.ondemand,
 		category: req.body.productcategory,
 		productstock: req.body.productstock,
-
-		// productimage: ,
 	});
 
 	newproduct.save((err, product) => {

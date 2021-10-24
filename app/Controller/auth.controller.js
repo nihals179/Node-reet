@@ -6,6 +6,8 @@ const Role = db.role;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+// google facebook signin
+
 exports.signup = (req, res) => {
 	const user = new User({
 		username: req.body.username,

@@ -26,4 +26,8 @@ module.exports = function (app) {
 		[authJwt.verifyToken, authJwt.isAdmin],
 		controller.adminBoard
 	);
+
+	app.post("/api/test/Refer", controller.refer);
+
+	app.post("/api/test/CouponRedeem", controller.redeem);
 };
