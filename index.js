@@ -80,6 +80,8 @@ require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/product.routes")(app);
 require("./app/routes/cart.routes")(app);
+require("./app/routes/payment.routes")(app);
+
 // simple route
 app.get("/", (req, res) => {
 	res.json({ message: "Welcome to application." });

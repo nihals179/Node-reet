@@ -1,3 +1,4 @@
+const { user } = require("../models");
 const db = require("../models");
 const User = db.user;
 const Coupon = db.coupon;
@@ -77,22 +78,38 @@ exports.redeem = (req, res) => {
 			res.status(200).send(err);
 		}
 
-		User.findOneAndUpdate(
-			{ _id: "61307639675fd24d24088f75" },
-			{
-				$inc: {
-					referpoints: coupon[0].couponamount,
-				},
-			},
-			{ new: false },
-			(err, user) => {
-				if (err) {
-					console.log(err);
-					res.status(500).send({ message: err });
-					return;
-				}
-				res.status(200).send(user);
+		User.find({
+			_id: "6140b19283b1a148f85ced33",
+			couponapplied: req.query.coupon,
+		}).exec((err, user) => {
+			if (err) {
+				res.status(200).send(err);
 			}
-		);
+
+			if (user.length == 0) {
+				User.findOneAndUpdate(
+					{ _id: "6140b19283b1a148f85ced33" },
+					{
+						$inc: {
+							referpoints: coupon[0].couponamount,
+						},
+						$push: {
+							couponapplied: req.query.coupon,
+						},
+					},
+					{ new: false },
+					(err, user) => {
+						if (err) {
+							console.log(err);
+							res.status(500).send({ message: err });
+							return;
+						}
+						res.status(200).send(user);
+					}
+				);
+			} else {
+				res.status(200).send("Coupon already applied");
+			}
+		});
 	});
 };

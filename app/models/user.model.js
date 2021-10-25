@@ -11,6 +11,7 @@ const User = mongoose.model(
 		refferingcode: String,
 		referredcode: String,
 		referpoints: Number,
+		couponapplied: Array,
 		roles: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
