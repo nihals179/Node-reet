@@ -1,5 +1,5 @@
 exports.paynow = (req, res) => {
-	console.log(req);
+	console.log(req.body);
 	if (!req.body.amount || !req.body.email || !req.body.phone) {
 		res.status(400).send("Payment failed");
 	} else {
@@ -44,6 +44,6 @@ exports.paynow = (req, res) => {
 	}
 };
 
-exports.getmoney = (req, res) => {
+exports.callback = (req, res) => {
 	res.send("hello");
 };

@@ -19,9 +19,9 @@ module.exports = function (app) {
 		})
 	);
 
-	app.post("/api/auth/hi", controller.getmoney);
+	app.post("/api/test/paynow", controller.paynow);
 
-	app.post("api/test/callback", (req, res) => {
+	app.post("/api/test/callback", (req, res) => {
 		var body = "";
 
 		req.on("data", function (data) {
